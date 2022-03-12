@@ -193,6 +193,26 @@ public class FindLongestWordTests
     }
 
     [Fact]
+    public void LongestWordHasSpecialCharacters_WordIsSkippedAsInvalid()
+    {
+        //Arrange
+        var lines = new List<string>
+        {
+            "this word is the longestforsure#",
+            "but it had a special character"
+        };
+
+        var sut = new LongestWordService();
+
+        //Act
+        var actual = sut.FindLongestWord(lines);
+
+        //Assert
+        var expected = "character";
+        actual.Should().Be(expected);
+    }
+
+    [Fact]
     public void LongestSetOfLettersIsNotWord_IgnoresNonWord()
     {
         //Arrange
