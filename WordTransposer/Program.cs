@@ -6,58 +6,28 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        //Validate Input is a file/folder path.
+        //Validate Input is a file/directory path.
         Guard.ArgumentIsProvided(args);
-        
-        var pathArgument = Path.GetFullPath(args[0]);
 
+        var pathArgument = Path.GetFullPath(args[0]);
         Guard.ArgumentIsNotEmpty(pathArgument);
 
-        //Figure out if we have a file or a folder.
-        var pathType = PathType.Error;
-
-        if(pathArgument.Contains('.') && File.Exists(pathArgument))
-        {
-            pathType = PathType.File;
-        }
-        else if(Directory.Exists(pathArgument))
-        {
-            pathType = PathType.Folder;
-        }
-
+        //Figure out if we have a file or a directory.
+        var pathType = FileService.GetPathType(pathArgument);
         Guard.PathTypeIsValid(pathType, pathArgument);
 
-        //Find longest word in file/folder
-        var longestWord = string.Empty;
-        var longestWordService = new LongestWordService();
-        
-        if(pathType == PathType.File)
+        //Find the longest word in the file/directory
+        var lines = pathType switch
         {
-            var lines = File.ReadLines(pathArgument);
-            longestWord = longestWordService.FindLongestWord(lines);
-        }
-        else if(pathType == PathType.Folder)
-        {
-            var filePaths = Directory.GetFiles(pathArgument);
+            PathType.File => FileService.GetLinesFromFile(pathArgument),
+            PathType.Directory => FileService.GetLinesFromDirectory(pathArgument),
 
-            foreach (var filePath in filePaths)
-            {
-                var lines = File.ReadLines(filePath);
-                var longestWordInFile = longestWordService.FindLongestWord(lines);
+            //This should be completely unreachable because of the guard clause, but the switch expression needs it defined because the enum value for error exists.
+            _ => throw new InvalidOperationException($"Invalid PathType for {pathArgument}") 
+        };
 
-                if(longestWordInFile.Length > longestWord.Length)
-                {
-                    longestWord = longestWordInFile;
-                }
-            }
-        }
-
-        //Transpose the word
-        var longestWordChars = longestWord.ToCharArray();
-        Array.Reverse(longestWordChars);
-
-
-        var transposedWord = new string(longestWordChars);
+        var longestWord = LongestWordService.FindLongestWord(lines);
+        var transposedWord = TranspositionService.Transpose(longestWord);
 
         Console.WriteLine($"Longest Word: {longestWord}");
         Console.WriteLine($"Transposed Word: {transposedWord}");

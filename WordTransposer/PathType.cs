@@ -4,5 +4,5 @@ public enum PathType
 {
     Error,
     File,
-    Folder
+    Directory
 }

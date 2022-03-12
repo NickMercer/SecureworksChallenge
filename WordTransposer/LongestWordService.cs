@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace WordTransposer;
 
-public class LongestWordService
+public static class LongestWordService
 {
     /// <summary>
     /// Searches through an enumerable of strings for the longest word made up of letters and apostrophes. Apostrophes are not included in the length of words.
     /// </summary>
     /// <param name="lines">input of words, separated by spaces, tabs, or newlines</param>
     /// <returns>longest valid word in the input enumerable</returns>
-    public string FindLongestWord(IEnumerable<string> lines)
+    public static string FindLongestWord(IEnumerable<string> lines)
     {
         if (lines == null)
         {
@@ -47,7 +47,7 @@ public class LongestWordService
     /// </summary>
     /// <param name="word">string to pass in</param>
     /// <returns>string filtered to include only letters A-Z and a-z.</returns>
-    private string SanitizeWord(string word)
+    private static string SanitizeWord(string word)
     {
         var wordLetters = word.Where(c => Char.IsLetter(c)).ToArray();
         return new string(wordLetters);
@@ -58,7 +58,7 @@ public class LongestWordService
     /// </summary>
     /// <param name="word">word to validate</param>
     /// <returns>true if valid word, false otherwise</returns>
-    private bool IsValidWord(string word)
+    private static bool IsValidWord(string word)
     {
         return word.All(c => Char.IsLetter(c) || c == '\'');
     }

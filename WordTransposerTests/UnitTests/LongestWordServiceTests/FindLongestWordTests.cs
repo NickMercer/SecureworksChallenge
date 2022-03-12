@@ -24,10 +24,8 @@ public class FindLongestWordTests
             "so it will return that one"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "ThisIsALongWordBecauseThereAreNoSpaces";
@@ -44,10 +42,8 @@ public class FindLongestWordTests
             "in this testcase sentence"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "testcase";
@@ -71,10 +67,8 @@ public class FindLongestWordTests
             "\n"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "nothing";
@@ -91,10 +85,8 @@ public class FindLongestWordTests
             ""
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = string.Empty;
@@ -107,10 +99,8 @@ public class FindLongestWordTests
         //Arrange
         var lines = new List<string>();
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = string.Empty;
@@ -123,10 +113,8 @@ public class FindLongestWordTests
         //Arrange
         IEnumerable<string> lines = null;
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = string.Empty;
@@ -142,10 +130,8 @@ public class FindLongestWordTests
             "this is\tseparated\nin    various  ways"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "separated";
@@ -162,10 +148,8 @@ public class FindLongestWordTests
             "but the longest is that"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "longest";
@@ -182,10 +166,8 @@ public class FindLongestWordTests
             "but the longest is that"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "longest";
@@ -202,10 +184,8 @@ public class FindLongestWordTests
             "but it had a special character"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "character";
@@ -222,10 +202,8 @@ public class FindLongestWordTests
             "but the longest is that"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "longest";
@@ -241,10 +219,8 @@ public class FindLongestWordTests
             "longest word has is an apostrophe's word"
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "apostrophe's";
@@ -260,10 +236,8 @@ public class FindLongestWordTests
             "this'll not be the longest word."
         };
 
-        var sut = new LongestWordService();
-
         //Act
-        var actual = sut.FindLongestWord(lines);
+        var actual = LongestWordService.FindLongestWord(lines);
 
         //Assert
         var expected = "longest";
