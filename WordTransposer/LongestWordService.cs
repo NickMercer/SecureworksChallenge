@@ -6,6 +6,11 @@ namespace WordTransposer;
 
 public class LongestWordService
 {
+    /// <summary>
+    /// Searches through an enumerable of strings for the longest word made up of letters and apostrophes. Apostrophes are not included in the length of words.
+    /// </summary>
+    /// <param name="lines">input of words, separated by spaces, tabs, or newlines</param>
+    /// <returns>longest valid word in the input enumerable</returns>
     public string FindLongestWord(IEnumerable<string> lines)
     {
         if (lines == null)
@@ -48,6 +53,11 @@ public class LongestWordService
         return new string(wordLetters);
     }
 
+    /// <summary>
+    /// Returns whether or not a word is made only with valid characters (alphabet or apostrophe)
+    /// </summary>
+    /// <param name="word">word to validate</param>
+    /// <returns>true if valid word, false otherwise</returns>
     private bool IsValidWord(string word)
     {
         return word.All(c => Char.IsLetter(c) || c == '\'');

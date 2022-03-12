@@ -9,7 +9,7 @@ namespace WordTransposerTests.UnitTests.LongestWordServiceTests;
 //Here I do test that the inputs in the lines enumerable, but I don't test the size of the enumerable in memory. 
 //That is left for the integration testing where files of various sizes are passed in.
 //I'm making this choice because the enumerable itself is just an interface, any tests on the object being passed in I am considering
-//as being resposible to be tested in the calling code. Here I just want to test what this method does with what it's given.
+//as being responsible to be tested in the calling code. Here I just want to test what this method does with what it's given.
 public class FindLongestWordTests
 {
     [Fact]
@@ -189,6 +189,26 @@ public class FindLongestWordTests
 
         //Assert
         var expected = "longest";
+        actual.Should().Be(expected);
+    }
+
+    [Fact]
+    public void LongestWordHasSpecialCharacters_WordIsSkippedAsInvalid()
+    {
+        //Arrange
+        var lines = new List<string>
+        {
+            "this word is the longestforsure#",
+            "but it had a special character"
+        };
+
+        var sut = new LongestWordService();
+
+        //Act
+        var actual = sut.FindLongestWord(lines);
+
+        //Assert
+        var expected = "character";
         actual.Should().Be(expected);
     }
 
