@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WordTransposer": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\dekor\\Desktop\\ManualTestFile.txt\""
+    }
+  }
+}

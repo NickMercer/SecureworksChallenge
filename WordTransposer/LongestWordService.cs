@@ -36,8 +36,7 @@ public class LongestWordService
     /// <returns>string filtered to include only letters A-Z and a-z.</returns>
     private string SanitizeWord(string word)
     {
-        return word.Where(c => Char.IsLetter(c))
-                    .ToArray()
-                    .ToString();
+        var wordLetters = word.Where(c => Char.IsLetter(c)).ToArray();
+        return new string(wordLetters);
     }
 }

@@ -9,7 +9,7 @@ public class Program
         //Validate Input is a file/folder path.
         Guard.ArgumentIsProvided(args);
         
-        var pathArgument = args[0];
+        var pathArgument = Path.GetFullPath(args[0]);
 
         Guard.ArgumentIsNotEmpty(pathArgument);
 
@@ -56,7 +56,8 @@ public class Program
         var longestWordChars = longestWord.ToCharArray();
         Array.Reverse(longestWordChars);
 
-        var transposedWord = longestWordChars.ToString();
+
+        var transposedWord = new string(longestWordChars);
 
         Console.WriteLine($"Longest Word: {longestWord}");
         Console.WriteLine($"Transposed Word: {transposedWord}");
