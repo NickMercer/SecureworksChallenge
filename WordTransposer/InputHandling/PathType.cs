@@ -1,4 +1,4 @@
-﻿namespace WordTransposer;
+﻿namespace WordTransposer.InputHandling;
 
 public enum PathType
 {

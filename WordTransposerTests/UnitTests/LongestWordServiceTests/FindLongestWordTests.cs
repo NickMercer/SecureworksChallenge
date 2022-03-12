@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Xunit;
 using FluentAssertions;
-using WordTransposer;
+using WordTransposer.TextManipulation;
 
 namespace WordTransposerTests.UnitTests.LongestWordServiceTests;
 

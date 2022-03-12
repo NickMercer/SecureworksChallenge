@@ -1,6 +1,6 @@
-﻿using WordTransposer;
-using Xunit;
+﻿using Xunit;
 using FluentAssertions;
+using WordTransposer.TextManipulation;
 
 namespace WordTransposerTests.UnitTests.TranspositionServiceTests;
 

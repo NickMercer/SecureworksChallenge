@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 
-namespace WordTransposer;
+namespace WordTransposer.InputHandling;
 
 //I'm using an abstraction of the file system to facilitate unit testing.
 public static class FileService
@@ -17,7 +16,7 @@ public static class FileService
     /// <returns>PathType value for the given path</returns>
     public static PathType GetPathType(IFileSystem fileSystem, string pathArgument)
     {
-        if(fileSystem == null)
+        if (fileSystem == null)
         {
             //Without this, the method would throw a NullReferenceException anyway, but for this challenge I'm trying to be explicit
             //So I'll have it throw a specific exception saying fileSystem needs to be passed in.
@@ -29,7 +28,7 @@ public static class FileService
             return PathType.Directory;
         }
 
-        if(fileSystem.File.Exists(pathArgument))
+        if (fileSystem.File.Exists(pathArgument))
         {
             return PathType.File;
         }
@@ -45,12 +44,20 @@ public static class FileService
     /// <returns>Enumerable of lines from the directory's files</returns>
     public static IEnumerable<string> GetLinesFromDirectory(IFileSystem fileSystem, string directoryPath)
     {
-        IEnumerable<string> directoryLines = Enumerable.Empty<string>();
+        if (fileSystem == null)
+        {
+            throw new ArgumentNullException("File system cannot be null");
+        }
+
+        var directoryLines = Enumerable.Empty<string>();
 
         foreach (var filePath in fileSystem.Directory.GetFiles(directoryPath))
         {
             var lines = GetLinesFromFile(fileSystem, filePath);
-            directoryLines.Concat(lines);
+            if (lines.Any(l => string.IsNullOrWhiteSpace(l) == false))
+            {
+                directoryLines = directoryLines.Concat(lines);
+            }
         }
 
         return directoryLines;
@@ -64,6 +71,11 @@ public static class FileService
     /// <returns>Enumerable of lines from the file</returns>
     public static IEnumerable<string> GetLinesFromFile(IFileSystem fileSystem, string filePath)
     {
+        if (fileSystem == null)
+        {
+            throw new ArgumentNullException("File system cannot be null");
+        }
+
         return fileSystem.File.ReadLines(filePath);
     }
 }

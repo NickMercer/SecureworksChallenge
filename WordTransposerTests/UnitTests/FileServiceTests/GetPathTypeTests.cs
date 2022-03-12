@@ -1,10 +1,10 @@
-﻿using WordTransposer;
-using Xunit;
+﻿using Xunit;
 using FluentAssertions;
 using System.IO.Abstractions.TestingHelpers;
 using System.Collections.Generic;
 using System.IO.Abstractions;
 using System;
+using WordTransposer.InputHandling;
 
 namespace WordTransposerTests.UnitTests.FileServiceTests;
 

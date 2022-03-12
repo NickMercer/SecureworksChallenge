@@ -1,8 +1,8 @@
 ﻿using System;
-using WordTransposer;
 using Xunit;
 using FluentAssertions;
 using System.IO;
+using WordTransposer.InputHandling;
 
 namespace WordTransposerTests.UnitTests.GuardTests;
 

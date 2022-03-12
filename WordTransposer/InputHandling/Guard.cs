@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace WordTransposer;
+namespace WordTransposer.InputHandling;
 
 public static class Guard
 {
@@ -14,7 +14,7 @@ public static class Guard
     /// <exception cref="ArgumentException">Thrown if args array is null or empty</exception>
     public static void ArgumentIsProvided(string[] args)
     {
-        if(args == null || args.Length == 0)
+        if (args == null || args.Length == 0)
         {
             throw new ArgumentException(_argumentExceptionMessage);
         }
@@ -41,7 +41,7 @@ public static class Guard
     /// <exception cref="FileNotFoundException">Thrown if path type is PathType.Error</exception>
     public static void PathTypeIsValid(PathType pathType, string filePath)
     {
-        if(pathType != PathType.File && pathType != PathType.Directory)
+        if (pathType != PathType.File && pathType != PathType.Directory)
         {
             var errorMessage = $"Could not find file or folder at location {filePath}.";
             throw new FileNotFoundException(errorMessage);

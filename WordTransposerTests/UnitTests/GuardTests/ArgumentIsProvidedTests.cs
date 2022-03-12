@@ -1,7 +1,7 @@
 ﻿using Xunit;
 using FluentAssertions;
-using WordTransposer;
 using System;
+using WordTransposer.InputHandling;
 
 namespace WordTransposerTests.UnitTests.GuardTests;
 

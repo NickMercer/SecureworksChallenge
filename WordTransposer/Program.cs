@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.IO.Abstractions;
-using WordTransposer;
+using WordTransposer.InputHandling;
+using WordTransposer.TextManipulation;
 
 public class Program
 {
@@ -24,7 +24,7 @@ public class Program
             PathType.File => FileService.GetLinesFromFile(fileSystem, pathArgument),
             PathType.Directory => FileService.GetLinesFromDirectory(fileSystem, pathArgument),
 
-            //This should be completely unreachable because of the guard clause, but the switch expression needs it defined because the enum value for error exists.
+            //This should be completely unreachable because of the guard clause, but the switch expression needs it defined because the enum value for PathType.Error exists.
             _ => throw new InvalidOperationException($"Invalid PathType for {pathArgument}") 
         };
 

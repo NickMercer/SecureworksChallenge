@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WordTransposer;
+namespace WordTransposer.TextManipulation;
 public static class TranspositionService
 {
     /// <summary>
@@ -11,12 +11,12 @@ public static class TranspositionService
     /// <returns>transposed word</returns>
     public static string Transpose(string word)
     {
-        if(word == null)
+        if (word == null)
         {
             return null;
         }
 
-        if(string.IsNullOrWhiteSpace(word))
+        if (string.IsNullOrWhiteSpace(word))
         {
             return string.Empty;
         }

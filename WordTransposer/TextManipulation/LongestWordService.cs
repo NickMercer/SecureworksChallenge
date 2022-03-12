@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace WordTransposer;
+namespace WordTransposer.TextManipulation;
 
 public static class LongestWordService
 {
@@ -21,11 +20,11 @@ public static class LongestWordService
         var longestWord = string.Empty;
         var longestWordLength = 0; //This is necessary because we want to return words with apostrophes but not count the apostrophes.
         var wordDelimiters = new char[] { ' ', '\n', '\t' }; //We're assuming 'words' are separated by spaces, newlines, or tabs.
-        
+
         foreach (var line in lines)
         {
             var words = line.Split(wordDelimiters);
-        
+
             foreach (var word in words)
             {
                 var filteredWord = SanitizeWord(word);
@@ -49,7 +48,7 @@ public static class LongestWordService
     /// <returns>string filtered to include only letters A-Z and a-z.</returns>
     private static string SanitizeWord(string word)
     {
-        var wordLetters = word.Where(c => Char.IsLetter(c)).ToArray();
+        var wordLetters = word.Where(c => char.IsLetter(c)).ToArray();
         return new string(wordLetters);
     }
 
@@ -60,6 +59,6 @@ public static class LongestWordService
     /// <returns>true if valid word, false otherwise</returns>
     private static bool IsValidWord(string word)
     {
-        return word.All(c => Char.IsLetter(c) || c == '\'');
+        return word.All(c => char.IsLetter(c) || c == '\'');
     }
 }
