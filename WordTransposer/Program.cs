@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Abstractions;
 using WordTransposer;
 
 public class Program
@@ -9,18 +10,19 @@ public class Program
         //Validate Input is a file/directory path.
         Guard.ArgumentIsProvided(args);
 
-        var pathArgument = Path.GetFullPath(args[0]);
+        var fileSystem = new FileSystem();
+        var pathArgument = fileSystem.Path.GetFullPath(args[0]);
         Guard.ArgumentIsNotEmpty(pathArgument);
 
         //Figure out if we have a file or a directory.
-        var pathType = FileService.GetPathType(pathArgument);
+        var pathType = FileService.GetPathType(fileSystem, pathArgument);
         Guard.PathTypeIsValid(pathType, pathArgument);
 
         //Find the longest word in the file/directory
         var lines = pathType switch
         {
-            PathType.File => FileService.GetLinesFromFile(pathArgument),
-            PathType.Directory => FileService.GetLinesFromDirectory(pathArgument),
+            PathType.File => FileService.GetLinesFromFile(fileSystem, pathArgument),
+            PathType.Directory => FileService.GetLinesFromDirectory(fileSystem, pathArgument),
 
             //This should be completely unreachable because of the guard clause, but the switch expression needs it defined because the enum value for error exists.
             _ => throw new InvalidOperationException($"Invalid PathType for {pathArgument}") 

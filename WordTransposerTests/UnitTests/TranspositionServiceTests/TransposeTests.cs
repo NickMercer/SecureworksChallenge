@@ -1,5 +1,4 @@
-﻿using System;
-using WordTransposer;
+﻿using WordTransposer;
 using Xunit;
 using FluentAssertions;
 
