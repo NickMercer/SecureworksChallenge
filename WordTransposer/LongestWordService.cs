@@ -8,7 +8,13 @@ public class LongestWordService
 {
     public string FindLongestWord(IEnumerable<string> lines)
     {
+        if (lines == null)
+        {
+            return string.Empty;
+        }
+
         var longestWord = string.Empty;
+        var longestWordLength = 0; //This is necessary because we want to return words with apostrophes but not count the apostrophes.
         var wordDelimiters = new char[] { ' ', '\n', '\t' }; //We're assuming 'words' are separated by spaces, newlines, or tabs.
         
         foreach (var line in lines)
@@ -18,10 +24,12 @@ public class LongestWordService
             foreach (var word in words)
             {
                 var filteredWord = SanitizeWord(word);
+                var wordIsLonger = filteredWord.Length > longestWordLength;
 
-                if (filteredWord.Length > longestWord.Length)
+                if (IsValidWord(word) && wordIsLonger)
                 {
-                    longestWord = filteredWord;
+                    longestWord = word;
+                    longestWordLength = filteredWord.Length;
                 }
             }
         }
@@ -38,5 +46,10 @@ public class LongestWordService
     {
         var wordLetters = word.Where(c => Char.IsLetter(c)).ToArray();
         return new string(wordLetters);
+    }
+
+    private bool IsValidWord(string word)
+    {
+        return word.All(c => Char.IsLetter(c) || c == '\'');
     }
 }
