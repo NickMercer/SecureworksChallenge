@@ -12,12 +12,12 @@ RUN dotnet build -c release --no-restore
 FROM build AS test
 WORKDIR /source/WordTransposerTests
 COPY WordTransposerTests/ .
-ENTRYPOINT ["dotnet", "test", "--logger:trx"]
+ENTRYPOINT ["dotnet", "test", "WordTransposerTests.dll"]
 
-FROM build AS publish
-RUN dotnet publish -c release --no-build -o /app
-
-FROM mcr.microsoft.com/dotnet/runtime:6.0
-WORKDIR /app
-COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "WordTransposer.dll"]
+#FROM build AS publish
+#RUN dotnet publish -c release --no-build -o /app
+#
+#FROM mcr.microsoft.com/dotnet/runtime:6.0
+#WORKDIR /app
+#COPY --from=publish /app .
+#ENTRYPOINT ["dotnet", "WordTransposer.dll"]

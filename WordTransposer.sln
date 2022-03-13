@@ -5,7 +5,12 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordTransposer", "WordTransposer\WordTransposer.csproj", "{6F48B598-FDA1-408A-8F77-9D4D77F1AF76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordTransposerTests", "WordTransposerTests\WordTransposerTests.csproj", "{87A8BD9C-06B7-4C4E-9A53-C725475AEF62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordTransposerTests", "WordTransposerTests\WordTransposerTests.csproj", "{87A8BD9C-06B7-4C4E-9A53-C725475AEF62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2918D627-E797-431E-9AC0-AD1CBED3F513}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
