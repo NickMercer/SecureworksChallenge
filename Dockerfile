@@ -1,15 +1,17 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /source
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine3.15 AS build
+WORKDIR /app
 
-COPY WordTransposer/*.csproj WordTransposer/
-RUN dotnet restore WordTransposer/WordTransposer.csproj
+# Copy and restore solution/project files
+COPY *.sln .
+COPY WordTransposer/*.csproj ./WordTransposer/
+COPY WordTransposerTests/*.csproj ./WordTransposerTests/
 
+RUN dotnet restore
 
-COPY WordTransposer/ WordTransposer/
-WORKDIR /source/WordTransposer
-RUN dotnet build -c release --no-restore
+#Copy full solution
+COPY . .
 
-FROM build AS test
-WORKDIR /source/WordTransposerTests
-COPY WordTransposerTests/ .
-ENTRYPOINT ["dotnet", "test", "WordTransposerTests.csproj"]
+#build
+RUN dotnet build
+
+ENTRYPOINT [ "dotnet", "test" ]
