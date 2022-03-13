@@ -7,6 +7,12 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        TransposeLongestWord(args);
+    }
+
+    //I'm just wrapping the whole program in a method so I can test it in the test suite
+    public static void TransposeLongestWord(string[] args)
+    {
         //Validate Input is a file/directory path.
         Guard.ArgumentIsProvided(args);
 
@@ -25,11 +31,17 @@ public class Program
             PathType.Directory => FileService.GetLinesFromDirectory(fileSystem, pathArgument),
 
             //This should be completely unreachable because of the guard clause, but the switch expression needs it defined because the enum value for PathType.Error exists.
-            _ => throw new InvalidOperationException($"Invalid PathType for {pathArgument}") 
+            _ => throw new InvalidOperationException($"Invalid PathType for {pathArgument}")
         };
 
         var longestWord = LongestWordService.FindLongestWord(lines);
         var transposedWord = TranspositionService.Transpose(longestWord);
+
+        if (string.IsNullOrWhiteSpace(longestWord))
+        {
+            longestWord = "No Longest Word";
+            transposedWord = "N/A";
+        }
 
         Console.WriteLine($"Longest Word: {longestWord}");
         Console.WriteLine($"Transposed Word: {transposedWord}");

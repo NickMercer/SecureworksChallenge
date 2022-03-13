@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,6 +7,64 @@
 
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile1.txt" />
+    <None Remove="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile2.txt" />
+    <None Remove="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile3.txt" />
+    <None Remove="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile4.txt" />
+    <None Remove="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile5.txt" />
+    <None Remove="TestCases\DirectoryWithFilesTest\EmptyTestFile.txt" />
+    <None Remove="TestCases\DirectoryWithFilesTest\LongestWordTest.txt" />
+    <None Remove="TestCases\DirectoryWithFilesTest\SimpleWordsTest.txt" />
+    <None Remove="TestCases\DirectoryWithFilesTest\TiedWordLengthTest.txt" />
+    <None Remove="TestCases\EmptyTestFile.txt" />
+    <None Remove="TestCases\SimpleWordsTest.txt" />
+    <None Remove="TestCases\TiedWordLengthTest.txt" />
+    <None Remove="TestCases\WordsWithInvalidCharactersTest.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\DirectoryWithEmptyFilesTest\EmptyTestFile5.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\DirectoryWithFilesTest\EmptyTestFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\DirectoryWithFilesTest\LongestWordTest.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\DirectoryWithFilesTest\SimpleWordsTest.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\DirectoryWithFilesTest\TiedWordLengthTest.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\EmptyTestFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\SimpleWordsTest.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\TiedWordLengthTest.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestCases\WordsWithInvalidCharactersTest.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.5.1" />
@@ -22,10 +80,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="IntegrationTests\" />
   </ItemGroup>
 
   <ItemGroup>
