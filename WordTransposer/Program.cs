@@ -43,7 +43,7 @@ public class Program
             transposedWord = "N/A";
         }
 
-        Console.WriteLine($"Longest Word: {longestWord}");
-        Console.WriteLine($"Transposed Word: {transposedWord}");
+        Console.WriteLine(longestWord);
+        Console.WriteLine(transposedWord);
     }
 }

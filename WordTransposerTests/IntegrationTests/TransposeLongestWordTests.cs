@@ -135,8 +135,8 @@ public class TransposeLongestWordTests
         //Assert
         var expected = new string[]
         {
-            "Longest Word: No Longest Word",
-            "Transposed Word: N/A"
+            "No Longest Word",
+            "N/A"
         };
         actual.ToString().Should().ContainAll(expected);
     }
@@ -155,8 +155,8 @@ public class TransposeLongestWordTests
         //Assert
         var expected = new string[]
         {
-            "Longest Word: No Longest Word",
-            "Transposed Word: N/A"
+            "No Longest Word",
+            "N/A"
         };
         actual.ToString().Should().ContainAll(expected);
     }
@@ -175,8 +175,8 @@ public class TransposeLongestWordTests
         //Assert
         var expected = new string[]
         {
-            "Longest Word: penultimate",
-            "Transposed Word: etamitlunep"
+            "penultimate",
+            "etamitlunep"
         };
         actual.ToString().Should().ContainAll(expected);
     }
@@ -195,8 +195,8 @@ public class TransposeLongestWordTests
         //Assert
         var expected = new string[]
         {
-            "Longest Word: hippopotomonstrosesquipedaliophobia",
-            "Transposed Word: aibohpoiladepiuqsesortsnomotopoppih"
+            "hippopotomonstrosesquipedaliophobia",
+            "aibohpoiladepiuqsesortsnomotopoppih"
         };
         actual.ToString().Should().ContainAll(expected);
     }
@@ -215,8 +215,8 @@ public class TransposeLongestWordTests
         //Assert
         var expected = new string[]
         {
-            "Longest Word: penultimate",
-            "Transposed Word: etamitlunep"
+            "penultimate",
+            "etamitlunep"
         };
         actual.ToString().Should().ContainAll(expected);
     }
@@ -235,8 +235,8 @@ public class TransposeLongestWordTests
         //Assert
         var expected = new string[]
         {
-            "Longest Word: ThisIsTheLongestWord",
-            "Transposed Word: droWtsegnoLehTsIsihT"
+            "ThisIsTheLongestWord",
+            "droWtsegnoLehTsIsihT"
         };
         actual.ToString().Should().ContainAll(expected);
     }
@@ -255,8 +255,8 @@ public class TransposeLongestWordTests
         //Assert
         var expected = new string[]
         {
-            "Longest Word: No Longest Word",
-            "Transposed Word: N/A"
+            "No Longest Word",
+            "N/A"
         };
         actual.ToString().Should().ContainAll(expected);
     }
