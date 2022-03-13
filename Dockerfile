@@ -12,7 +12,7 @@ RUN dotnet build -c release --no-restore
 FROM build AS test
 WORKDIR /source/WordTransposerTests
 COPY WordTransposerTests/ .
-ENTRYPOINT ["dotnet", "test", "WordTransposerTests.dll"]
+ENTRYPOINT ["dotnet", "test", "WordTransposerTests.csproj"]
 
 #FROM build AS publish
 #RUN dotnet publish -c release --no-build -o /app
